@@ -1,5 +1,6 @@
 package com.example.demo.exception;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,11 +14,13 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import java.util.Objects;
 
+@Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
   @ExceptionHandler(MethodArgumentTypeMismatchException.class)
   public ResponseEntity<ErrorResponse> handleTypeMismatch(MethodArgumentTypeMismatchException ex) {
+    log.info("HandleTypeMismatch called with {}",ex.getMessage());
     String name = ex.getName();
     String type = Objects.requireNonNull(ex.getRequiredType()).getSimpleName();
     Object value = ex.getValue();
@@ -33,6 +36,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
           RuntimeException exception,
           WebRequest request
   ) {
+    log.error("UncaughtException occurred with {}",request);
     return buildErrorResponse(exception, exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
   }
 
@@ -41,6 +45,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
           String message,
           HttpStatus httpStatus
   ) {
+    log.error("Build error response with ex: {}, HttpStatus: {}",ex.getMessage(), httpStatus);
     ErrorResponse errorResponse = new ErrorResponse(
             httpStatus.value(),
             message
