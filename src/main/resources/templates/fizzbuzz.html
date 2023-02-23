@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FizzBuzz Example</title>
+    <style>
+        /* Style the input field */
+        #input {
+            font-size: 1.5em;
+            padding: 0.5em;
+            border-radius: 0.25em;
+            border: 1px solid #ccc;
+            margin-right: 1em;
+        }
+
+        /* Style the submit button */
+        button[type="submit"] {
+            font-size: 1.5em;
+            padding: 0.5em 1em;
+            border-radius: 0.25em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1>FizzBuzz Example</h1>
+<form action="#" th:action="@{/page/fizzbuzz}" th:method="get">
+    <label for="input">Enter a number:</label>
+    <input type="text" id="input" name="input" required style="width: 5em;">
+    <button type="submit" style="width: 8em;">Submit</button>
+</form>
+<hr>
+<h2>Result:</h2>
+<div th:if="${result != null}" th:text="${result}"></div>
+</body>
+</html>
