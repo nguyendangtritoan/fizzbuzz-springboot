@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>FizzBuzz Example</title>
+    <link rel="stylesheet" href="path/to/custom.css"> <!-- link to the custom CSS file -->
     <style>
         /* Style the input field */
         #input {
@@ -17,10 +18,19 @@
             font-size: 1.5em;
             padding: 0.5em 1em;
             border-radius: 0.25em;
-            background-color: #4CAF50;
-            color: white;
+            background-color: #00e2f0;
+            color: black;
             border: none;
             cursor: pointer;
+        }
+        body {
+            background-color: #000000;
+            background-image: url('https://assets.website-files.com/614b3bd8c09a159ff7e5cdea/6152ef1b9633722dfda252f9_ONEiO_background-hexagon_35.svg'); /* add the SVG icon as a background image */
+            background-repeat: no-repeat;
+            background-position: right center;
+            background-size: 100%;
+            color: white;
+            font-family: sans-serif;
         }
     </style>
 </head>
@@ -29,7 +39,7 @@
 <form action="#" th:action="@{/page/fizzbuzz}" th:method="get">
     <label for="input">Enter a number:</label>
     <input type="text" id="input" name="input" required style="width: 5em;">
-    <button type="submit" style="width: 8em;">Submit</button>
+    <button type="submit" style="width: 8em;">SUBMIT</button>
 </form>
 <hr>
 <h2>Result:</h2>
